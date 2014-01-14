@@ -2,6 +2,8 @@ require 'sinatra'
 require 'prime'
 require 'chunky_png'
 
+Dir.mkdir("./cache") unless Dir.exists?("./cache")
+
 get '/' do
   unless params[:width] && params[:height]
     return "Error, you must specify a width and height"
@@ -13,6 +15,11 @@ get '/' do
   col_major = !!params[:col_major]
 
   content_type 'image/png'
+  fname = "./cache/#{[width,height,start_at,col_major].map(&:to_s).join('_')}.png"
+
+  if File.exists?(fname)
+    send_file fname
+  end
 
   img = ChunkyPNG::Image.new(width, height, ChunkyPNG::Color('black'))
   for x in 0...width
@@ -23,7 +30,6 @@ get '/' do
     end
   end
 
-  stream do |out|
-    out << img.to_blob
-  end
+  img.save(fname)
+  img.to_blob
 end
