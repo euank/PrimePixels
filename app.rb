@@ -18,7 +18,7 @@ get '/' do
   fname = "./cache/#{[width,height,start_at,col_major].map(&:to_s).join('_')}.png"
 
   if File.exists?(fname)
-    send_file fname
+    return send_file fname
   end
 
   img = ChunkyPNG::Image.new(width, height, ChunkyPNG::Color('black'))
