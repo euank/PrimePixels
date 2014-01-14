@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Prime Pixel Image Generator</title>
+  </head>
+  <body>
+    <h1>Prime Pixel Image Generator</h1>
+    <p> Inspired by <a href="http://www.reddit.com/r/math/comments/1v4e65/all_prime_numbers_between_2_and_2073600_mapped_as/">this</a> reddit thread.
+    <p>Please note, it takes a lot of computing power to make larger images; do so sparingly.
+    <br />
+    <form action="make_image">
+      <label for="width"> Width: </label>
+      <input id="width" value="500" type="number" name="width"></input><br />
+
+      <label for="height"> Height: </label>
+      <input id="height" value="500" type="number" name="height"></input><br />
+
+      <label for="start"> Start at: </label>
+      <input id="start" value="2" type="number" name="start"></input><br />
+
+      <label for="col_major"> Column major: </label>
+      <input id="col_major" type="checkbox" name="col_major"></input><br />
+      <input type="submit"></input>
+    </form>
+
+  </body>
+</html>
