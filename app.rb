@@ -11,7 +11,7 @@ get '/' do
   width = params[:width].to_i
   height = params[:height].to_i
   start_at = 2
-  start_at ||= params[:start].to_i
+  start_at = params[:start].to_i unless params[:start].nil?
   col_major = !!params[:col_major]
 
   content_type 'image/png'
